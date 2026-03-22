@@ -2,7 +2,7 @@
 
 ## 📋 Contexto del Proyecto
 
-- **Framework:** Astro 4
+- **Framework:** Astro 6
 - **Hosting:** Vercel
 - **Paleta:** Minimal Contrast (Dark/Light mode)
 - **Protagonista:** Blog
@@ -34,18 +34,16 @@ src/
 │   ├── BaseLayout.astro
 │   └── BlogLayout.astro
 ├── pages/
-│   ├── index.astro (home)
-│   ├── about.astro
-│   ├── work.astro
-│   ├── blog/
-│   │   ├── index.astro (listado)
-│   │   └── [...slug].astro (post dinámico)
-│   ├── projects.astro
-│   └── now.astro
+│   ├── index.astro (home - contiene todas las secciones)
+│   └── blog/
+│       ├── index.astro (listado completo de posts)
+│       └── [...slug].astro (post dinámico)
 ├── components/
-│   ├── navbar/
-│   │   ├── Navbar.astro
-│   │   └── ThemeToggle.jsx
+│   ├── home/
+│   │   ├── HeroSection.astro
+│   │   ├── AboutSection.astro
+│   │   ├── WorkSection.astro
+│   │   └── ProjectsSection.astro
 │   ├── blog/
 │   │   ├── BlogCard.astro
 │   │   ├── BlogHeader.astro
@@ -54,7 +52,7 @@ src/
 │   │   ├── GithubStats.jsx
 │   │   └── GoodreadsBooks.jsx
 │   └── shared/
-│       ├── Footer.astro
+│       ├── ThemeToggle.jsx
 │       └── Head.astro
 ├── content/
 │   ├── blog/
@@ -91,51 +89,28 @@ Integrar TailwindCSS con colores personalizados
 
 ```
 BaseLayout.astro
-- Navbar (con ThemeToggle)
+- ThemeToggle (flotante o en el hero)
 - Slot para contenido
-- Footer
+
+BlogLayout.astro
+- Link "← Volver a home" al inicio
+- Slot para contenido del post
 ```
 
-#### Paso 2.2: Página Home (index.astro)
+#### Paso 2.2: Página Home (index.astro) — página única con todas las secciones
 
 ```
-Secciones:
+Secciones en orden:
 1. Hero section (intro breve)
-2. CTA al blog
-3. Destacados: últimos 3 posts
-4. Sección "Now" (preview de GitHub + Goodreads)
-5. Footer
-```
-
-#### Paso 2.3: Página About
-
-```
-Intro como desarrollador
-- Quién eres
-- Por qué este portfolio/blog
-- Invitación a leer el blog
-```
-
-#### Paso 2.4: Página Work Experience
-
-```
-Timeline de experiencias laborales
-- Empresa
-- Período
-- Logros principales (3-4 puntos)
-- Stack tecnológico usado
-No timeline visual, cards simples y limpias
-```
-
-#### Paso 2.5: Página Projects
-
-```
-3-5 proyectos destacados
-- Imagen/screenshot
-- Título
-- Descripción breve
-- Tech stack
-- Links (GitHub, demo si aplica)
+2. About section (quién eres, por qué este blog)
+3. Work Experience section (cards de experiencia laboral)
+   - Empresa, período, logros principales (3-4 puntos), stack tecnológico
+   - Cards simples y limpias, sin timeline visual
+4. Projects section (3-5 proyectos destacados)
+   - Título, descripción breve, tech stack, links (GitHub + demo)
+5. Blog section (3-4 extractos de posts recientes + CTA a /blog)
+6. GitHub widget (actividad reciente)
+7. Goodreads widget (últimos libros leídos)
 ```
 
 ---
@@ -232,26 +207,15 @@ Mostrar:
 - Pequeña descripción
 ```
 
-#### Paso 4.3: Página "Now"
+#### Paso 4.3: ThemeToggle component
 
 ```
-now.astro
-- GitHub widget (lenguajes, commits)
-- Goodreads widget (libros)
-- Última canción en Spotify (opcional)
-- Lo que estoy haciendo ahora (texto estático)
-
-Actualización: ISR cada 6 horas
-```
-
-#### Paso 4.4: ThemeToggle component
-
-```
-Componente interactivo (React/Preact)
+Componente interactivo (React)
 - Detecta preferencia del sistema
 - Persiste en localStorage
 - Toggle suave sin flash
 - Default: dark mode
+- Posición: flotante (esquina superior derecha) o dentro del HeroSection
 ```
 
 ---
@@ -312,7 +276,7 @@ Email de contacto (opcional)
 
 ```
 Semana 1: Setup base + estructura
-Semana 2: Páginas estáticas (Home, About, Work, Projects)
+Semana 2: Home page completa (Hero, About, Work, Projects, Blog preview)
 Semana 3: Blog completamente funcional con 5 posts
 Semana 4: Integraciones GitHub + Goodreads
 Semana 5: SEO, optimización y deploy
@@ -329,11 +293,10 @@ Si quieres ir más rápido, enfócate en esto (2-3 semanas):
 
 1. ✅ Setup Astro + estructura base
 2. ✅ Navbar + Theme toggle
-3. ✅ Blog core (5 posts)
-4. ✅ Home con CTA al blog
-5. ✅ About + Work Experience
-6. ✅ Deploy en Vercel
-7. ⏰ Después: Projects, Now, integraciones
+3. ✅ Home page completa (Hero, About, Work, Projects, Blog preview)
+4. ✅ Blog core (5 posts) + página /blog
+5. ✅ Deploy en Vercel
+6. ⏰ Después: Now, integraciones GitHub + Goodreads
 
 ---
 
@@ -381,13 +344,13 @@ EMAIL_PUBLIC_KEY=
 - [ ] 5 posts de ejemplo en blog
 - [ ] Blog listado funcional
 - [ ] Página individual de post funcional
-- [ ] Home page con destacados
-- [ ] About page completa
-- [ ] Work Experience con al menos 3 experiencias
-- [ ] Projects page con 3+ proyectos
+- [ ] Home page completa (Hero + About + Work + Projects + Blog preview + Now preview)
+- [ ] Work Experience con al menos 3 experiencias (sección en home)
+- [ ] Projects con 3+ proyectos (sección en home)
 - [ ] GitHub API integrada
 - [ ] Goodreads API integrada
-- [ ] Página "Now" funcional
+- [ ] GitHub widget integrado en home
+- [ ] Goodreads widget integrado en home
 - [ ] SEO setup (meta tags, sitemap)
 - [ ] Lighthouse 90+
 - [ ] Desplegado en Vercel

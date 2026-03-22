@@ -4,17 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Estado del Proyecto
 
-Portfolio personal con blog como protagonista. **El proyecto aún no está inicializado** — solo existe `plan-portfolio-astro.md`. El primer paso es ejecutar `npm create astro@latest` para inicializarlo.
+Portfolio personal con blog como protagonista. Proyecto inicializado con **Astro 6** y Node 22 (vía NVM).
 
 ## Stack Tecnológico
 
-- **Framework:** Astro 4 (sitio estático con ISR para integraciones dinámicas)
+- **Framework:** Astro 6 (sitio estático con ISR para integraciones dinámicas)
 - **Estilos:** TailwindCSS 3.x con variables CSS personalizadas para dark/light mode
 - **Componentes interactivos:** React (`@astrojs/react`) — solo para ThemeToggle e integraciones de GitHub/Goodreads
 - **Hosting:** Vercel con deploy automático desde `main`
 - **Content:** Astro Content Collections para blog y proyectos
 
-## Comandos (una vez inicializado)
+## Comandos
 
 ```bash
 npm run dev       # servidor de desarrollo local
@@ -28,26 +28,31 @@ npm run preview   # previsualizar build
 
 ```
 src/pages/
-├── index.astro           # Home: hero + CTA blog + últimos 3 posts + preview "Now"
-├── about.astro
-├── work.astro            # Timeline de experiencia laboral (cards, no timeline visual)
-├── projects.astro        # 3-5 proyectos con tech stack + links
-├── now.astro             # Widgets GitHub + Goodreads, actualización ISR cada 6h
+├── index.astro           # Home: Hero → About → Work → Projects → Blog preview (3-4 posts) → GitHub widget → Goodreads widget
 └── blog/
-    ├── index.astro       # Listado ordenado por fecha desc
+    ├── index.astro       # Listado completo de posts, ordenado por fecha desc
     └── [...slug].astro   # Post individual con TOC + nav prev/next
 ```
 
+Todo el contenido vive en `index.astro` como secciones. Las únicas páginas independientes son `/blog` y `/blog/[slug]`.
+
+### Navegación
+
+Sin navbar ni footer global. La navegación es contextual:
+- El CTA "Ver todos los posts" en la sección blog de home enlaza a `/blog`
+- Las páginas de blog y `/now` tienen un link "← Volver a home" en la parte superior
+- El ThemeToggle va flotante (esquina superior derecha) o dentro del HeroSection
+
 ### Layouts
 
-- `BaseLayout.astro` — envuelve todo: Navbar (con ThemeToggle) + slot + Footer
-- `BlogLayout.astro` — extiende BaseLayout, añade BlogHeader y BlogToc
+- `BaseLayout.astro` — incluye `Head.astro` (SEO) + ThemeToggle + slot
+- `BlogLayout.astro` — extiende BaseLayout, añade link de vuelta a home + BlogHeader + BlogToc
 
 ### Componentes con lógica interactiva (React)
 
-Solo dos componentes usan React (client:load):
+Solo estos componentes usan React (client:load):
 
-- `navbar/ThemeToggle.jsx` — persiste preferencia en localStorage, default dark
+- `shared/ThemeToggle.jsx` — persiste preferencia en localStorage, default dark
 - `integrations/GithubStats.jsx` y `integrations/GoodreadsBooks.jsx` — consumen APIs externas
 
 El resto de componentes son `.astro` puros (sin JS en cliente).
@@ -99,4 +104,4 @@ Los datos de GitHub y Goodreads se cachean con ISR (GitHub: cada 1h, Now page: c
 
 ## Instrucciones para Claude.
 
-Como nunca he trabajado Astro dime porque tomas cada una de las decisiones y a la vez enseñame Astro para que yo pueda ir aprendiendo sobre este framework.
+Como nunca he trabajado Astro dime porque tomas cada una de las decisiones y a la vez enseñame Astro para que yo pueda ir aprendiendo sobre este framework. También muestra links a la documentación de Astro donde se haga referencia al tema que estamos tratando.
