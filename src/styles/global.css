@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+/*
+ * @theme inline registra los tokens en Tailwind 4.
+ * "inline" significa que Tailwind usará la variable CSS tal cual
+ * en lugar de sustituir el valor en tiempo de compilación.
+ * Esto permite que los colores cambien dinámicamente con el tema.
+ * Docs: https://tailwindcss.com/docs/theme
+ */
+@theme inline {
+  /* Colores de marca — estáticos, no cambian con el tema */
+  --color-primary: #3b82f6;
+  --color-secondary: #10b981;
+
+  /*
+   * Colores semánticos — apuntan a variables CSS que sí cambian.
+   * Esto permite usar clases como `bg-bg`, `text-fg`, `border-border-color`
+   * en cualquier componente sin preocuparte del tema activo.
+   */
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border-color: var(--border-color);
+  --color-surface: var(--surface);
+}
+
+/*
+ * :root define el tema oscuro por defecto.
+ * El ThemeToggle añadirá data-theme="light" al <html> cuando el usuario cambie.
+ * Docs: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+ */
+:root {
+  --bg: #0a0a0a;
+  --fg: #e8e8e8;
+  --muted: #a0a0a0;
+  --border-color: #2a2a2a;
+  --surface: #141414;
+}
+
+/* Tema claro: se activa cuando el <html> tiene data-theme="light" */
+[data-theme="light"] {
+  --bg: #ffffff;
+  --fg: #1a1a1a;
+  --muted: #6b6b6b;
+  --border-color: #e5e5e5;
+  --surface: #f5f5f5;
+}
+
+/* ============================================
+   Base
+   ============================================ */
+
+/*
+ * Aplicamos los colores del tema al body.
+ * transition evita un cambio brusco al hacer toggle.
+ */
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
