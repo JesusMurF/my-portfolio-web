@@ -1,0 +1,20 @@
+---
+import Head from '../components/shared/Head.astro';
+import ThemeToggle from '../components/shared/ThemeToggle.jsx';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <Head title={title} description={description} />
+  <body class="bg-[var(--bg)] text-[var(--fg)] min-h-screen">
+    <ThemeToggle client:load />
+    <slot />
+  </body>
+</html>

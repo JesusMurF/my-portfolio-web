@@ -304,14 +304,14 @@ Si quieres ir más rápido, enfócate en esto (2-3 semanas):
 
 ```json
 {
-  "astro": "^4.0.0",
-  "tailwindcss": "^3.0.0",
-  "@astrojs/tailwind": "^4.0.0",
-  "@astrojs/react": "^3.0.0",
-  "@astrojs/sitemap": "^2.0.0",
-  "typescript": "^5.0.0",
-  "lucide-react": "^0.x.0",
-  "clsx": "^2.0.0"
+  "astro": "^6.0.8",           // ✅ instalado
+  "tailwindcss": "^4.2.2",     // ✅ instalado (Tailwind 4 vía @tailwindcss/vite)
+  "@tailwindcss/vite": "^4.2.2", // ✅ instalado
+  "@astrojs/react": "^3.0.0",  // ✅ instalado
+  "@astrojs/sitemap": "^2.0.0", // pendiente
+  "typescript": "^5.0.0",      // incluido en Astro
+  "lucide-react": "^0.x.0",    // pendiente
+  "clsx": "^2.0.0"             // pendiente
 }
 ```
 
@@ -337,9 +337,11 @@ EMAIL_PUBLIC_KEY=
 
 ## ✅ Checklist de Finalización
 
-- [ ] Proyecto Astro inicializado
-- [ ] Estructura de carpetas creada
-- [ ] Paleta de colores aplicada (dark/light)
+- [x] Proyecto Astro inicializado (Astro 6 + Node 22 vía NVM)
+- [x] Paleta de colores aplicada (dark/light) — variables CSS + Tailwind 4 configurado
+- [x] ThemeToggle funcional — isla React, persiste en localStorage, sin flash al cargar
+- [x] BaseLayout.astro — incluye Head.astro + ThemeToggle + slot
+- [x] Head.astro — meta tags, favicon, script anti-flash
 - [ ] Navbar + ThemeToggle funcionales
 - [ ] 5 posts de ejemplo en blog
 - [ ] Blog listado funcional
