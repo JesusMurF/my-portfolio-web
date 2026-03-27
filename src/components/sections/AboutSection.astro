@@ -1,0 +1,49 @@
+---
+// AboutSection.astro — presentación detallada del autor
+// Componente .astro puro: sin JS en cliente.
+// Docs: https://docs.astro.build/en/basics/astro-components/
+
+const skills = [
+  'TypeScript', 'React', 'Astro', 'Node.js',
+  'PostgreSQL', 'Docker', 'CSS', 'Accesibilidad web',
+];
+---
+
+<section class="border-t border-border-color pt-16 pb-16">
+  <!-- Etiqueta de sección — mismo patrón visual que HeroSection -->
+  <p class="text-muted text-sm font-mono mb-3 tracking-widest uppercase">
+    Sobre mí
+  </p>
+
+  <h2 class="text-2xl font-bold text-fg mb-6">
+    Desarrollador, escritor ocasional, eterno aprendiz.
+  </h2>
+
+  <div class="space-y-4 text-muted leading-relaxed mb-8">
+    <p>
+      Llevo más de cinco años construyendo productos web, desde pequeñas
+      herramientas internas hasta plataformas con miles de usuarios. Me gusta
+      el trabajo bien hecho: código legible, interfaces que no necesitan
+      explicación y sistemas que no te despiertan a las 3 de la mañana.
+    </p>
+    <p>
+      Este blog nació de la necesidad de externalizar lo que aprendo. Escribir
+      me obliga a entender de verdad, no solo a copiar. Aquí encontrarás
+      artículos técnicos, reflexiones sobre el oficio y de vez en cuando algo
+      sobre libros o productividad.
+    </p>
+    <p>
+      Cuando no estoy frente al teclado, probablemente estoy leyendo, tomando
+      café o convenciendo a alguien de que los tests sí importan.
+    </p>
+  </div>
+
+  <!-- Skills: chips visuales usando bg-surface del tema activo -->
+  <div class="flex flex-wrap gap-2">
+    {skills.map((skill) => (
+      <span class="bg-surface text-muted text-sm px-3 py-1 rounded">
+        {skill}
+      </span>
+    ))}
+  </div>
+</section>
