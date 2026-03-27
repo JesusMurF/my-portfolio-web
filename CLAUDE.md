@@ -39,6 +39,7 @@ Todo el contenido vive en `index.astro` como secciones. Las únicas páginas ind
 ### Navegación
 
 Sin navbar ni footer global. La navegación es contextual:
+
 - El CTA "Ver todos los posts" en la sección blog de home enlaza a `/blog`
 - Las páginas de blog y `/now` tienen un link "← Volver a home" en la parte superior
 - El ThemeToggle va flotante (esquina superior derecha) o dentro del HeroSection
@@ -105,3 +106,21 @@ Los datos de GitHub y Goodreads se cachean con ISR (GitHub: cada 1h, Now page: c
 ## Instrucciones para Claude.
 
 Como nunca he trabajado Astro dime porque tomas cada una de las decisiones y a la vez enseñame Astro para que yo pueda ir aprendiendo sobre este framework. También muestra links a la documentación de Astro donde se haga referencia al tema que estamos tratando.
+
+## Git
+
+## Git
+
+**Formato:** `<tipo>(<scope>): <descripción>` — inglés, imperativo, minúscula, sin punto, máx 120 chars, 2 lineas como maximo como descripción.
+
+**Co-Authored-By obligatorio:**
+
+```
+feat(extractor): add visitor for @computed decorators
+
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+```
+
+- Ramas: `feat/<name>` o `fix/<name>`
+- Antes de mergear: pasar tests unitarios
+- Crea las PR escritas en inglés basandote en la plantilla en `.github/pull_request_template.md`
