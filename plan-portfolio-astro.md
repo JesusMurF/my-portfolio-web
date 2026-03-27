@@ -304,14 +304,14 @@ Si quieres ir más rápido, enfócate en esto (2-3 semanas):
 
 ```json
 {
-  "astro": "^6.0.8",           // ✅ instalado
-  "tailwindcss": "^4.2.2",     // ✅ instalado (Tailwind 4 vía @tailwindcss/vite)
-  "@tailwindcss/vite": "^4.2.2", // ✅ instalado
-  "@astrojs/react": "^3.0.0",  // ✅ instalado
-  "@astrojs/sitemap": "^2.0.0", // pendiente
-  "typescript": "^5.0.0",      // incluido en Astro
-  "lucide-react": "^0.x.0",    // pendiente
-  "clsx": "^2.0.0"             // pendiente
+  "astro": "^6.0.8",
+  "tailwindcss": "^4.2.2",
+  "@tailwindcss/vite": "^4.2.2",
+  "@astrojs/react": "^3.0.0",
+  "@astrojs/sitemap": "^2.0.0",
+  "typescript": "^5.0.0",
+  "lucide-react": "^0.x.0",
+  "clsx": "^2.0.0"
 }
 ```
 
@@ -340,15 +340,15 @@ EMAIL_PUBLIC_KEY=
 - [x] Proyecto Astro inicializado (Astro 6 + Node 22 vía NVM)
 - [x] Paleta de colores aplicada (dark/light) — variables CSS + Tailwind 4 configurado
 - [x] ThemeToggle funcional — isla React, persiste en localStorage, sin flash al cargar
-- [x] BaseLayout.astro — incluye Head.astro + ThemeToggle + slot
+- [x] BaseLayout.astro — incluye Head.astro + ThemeToggle + slot + import global.css
 - [x] Head.astro — meta tags, favicon, script anti-flash
-- [ ] Navbar + ThemeToggle funcionales
+- [x] HeroSection.astro — saludo, tagline, bio, CTA al blog, links sociales
+- [ ] Home page completa (About + Work + Projects + Blog preview)
+- [ ] Work Experience con al menos 3 experiencias (sección en home)
+- [ ] Projects con 3+ proyectos (sección en home)
 - [ ] 5 posts de ejemplo en blog
 - [ ] Blog listado funcional
 - [ ] Página individual de post funcional
-- [ ] Home page completa (Hero + About + Work + Projects + Blog preview + Now preview)
-- [ ] Work Experience con al menos 3 experiencias (sección en home)
-- [ ] Projects con 3+ proyectos (sección en home)
 - [ ] GitHub API integrada
 - [ ] Goodreads API integrada
 - [ ] GitHub widget integrado en home
