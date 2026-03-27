@@ -343,7 +343,8 @@ EMAIL_PUBLIC_KEY=
 - [x] BaseLayout.astro — incluye Head.astro + ThemeToggle + slot + import global.css
 - [x] Head.astro — meta tags, favicon, script anti-flash
 - [x] HeroSection.astro — saludo, tagline, bio, CTA al blog, links sociales
-- [ ] Home page completa (About + Work + Projects + Blog preview)
+- [x] AboutSection.astro — bio, párrafos y chips de skills
+- [ ] Home page completa (Work + Projects + Blog preview)
 - [ ] Work Experience con al menos 3 experiencias (sección en home)
 - [ ] Projects con 3+ proyectos (sección en home)
 - [ ] 5 posts de ejemplo en blog
