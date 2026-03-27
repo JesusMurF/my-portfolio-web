@@ -1,0 +1,58 @@
+---
+// HeroSection.astro — sección principal de la home
+// Componente .astro puro: sin JS en cliente, renderizado en servidor (o build time).
+// Docs: https://docs.astro.build/en/basics/astro-components/
+---
+
+<section class="pt-24 pb-16">
+  <!-- Saludo + nombre -->
+  <p class="text-muted text-sm font-mono mb-3 tracking-widest uppercase">
+    Hola, soy
+  </p>
+
+  <h1 class="text-4xl sm:text-5xl font-bold text-fg leading-tight mb-4">
+    John Doe
+    <span class="block text-primary mt-1">Desarrollador web.</span>
+  </h1>
+
+  <!-- Tagline -->
+  <p class="text-xl text-muted max-w-xl mb-6 leading-relaxed">
+    Construyo interfaces que importan y escribo sobre lo que aprendo en el camino.
+    Apasionado del código limpio, el diseño funcional y el café largo.
+  </p>
+
+  <!-- CTAs -->
+  <div class="flex flex-wrap gap-4 items-center">
+    <a
+      href="/blog"
+      class="px-5 py-2.5 bg-primary text-white font-medium rounded-lg hover:opacity-90 transition-opacity"
+    >
+      Leer el blog →
+    </a>
+
+    <div class="flex gap-5 items-center">
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-muted hover:text-fg transition-colors text-sm"
+      >
+        GitHub
+      </a>
+      <a
+        href="https://twitter.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-muted hover:text-fg transition-colors text-sm"
+      >
+        Twitter
+      </a>
+      <a
+        href="mailto:hello@example.com"
+        class="text-muted hover:text-fg transition-colors text-sm"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+</section>

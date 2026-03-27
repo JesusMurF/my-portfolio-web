@@ -1,13 +1,13 @@
 ---
-import '../styles/global.css';
+// En Astro, el frontmatter (entre ---) se ejecuta en el servidor/build time.
+// Las importaciones de componentes van aquí arriba.
+// Docs: https://docs.astro.build/en/basics/astro-pages/
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
 ---
 
-<BaseLayout title="Portfolio" description="Portfolio personal y blog de desarrollo">
-  <main class="max-w-3xl mx-auto px-6 py-20">
-    <h1 class="text-fg text-4xl font-bold">Hola, Tailwind 4 funciona</h1>
-    <p class="text-muted mt-2">Texto en color muted</p>
-    <span class="text-primary">Color primario</span> ·
-    <span class="text-secondary">Color secundario</span>
+<BaseLayout title="John Doe — Desarrollador web" description="Blog y portfolio de John Doe, desarrollador web.">
+  <main class="max-w-3xl mx-auto px-6">
+    <HeroSection />
   </main>
 </BaseLayout>
