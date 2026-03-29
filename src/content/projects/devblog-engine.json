@@ -1,0 +1,8 @@
+{
+  "title": "DevBlog Engine",
+  "description": "Motor de blog estático construido con Astro y Markdown. Soporta syntax highlighting, tabla de contenidos automática y modo oscuro sin flash.",
+  "stack": ["Astro", "TypeScript", "TailwindCSS", "Markdown"],
+  "github": "https://github.com/example/devblog-engine",
+  "demo": "https://devblog-engine.vercel.app",
+  "featured": true
+}

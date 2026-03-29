@@ -1,0 +1,7 @@
+{
+  "title": "API REST con Node.js",
+  "description": "API para una app de gestión de tareas con autenticación JWT, rate limiting y documentación OpenAPI generada automáticamente.",
+  "stack": ["Node.js", "Express", "PostgreSQL", "JWT", "Swagger"],
+  "github": "https://github.com/example/tasks-api",
+  "featured": true
+}
