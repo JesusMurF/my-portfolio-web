@@ -345,7 +345,7 @@ EMAIL_PUBLIC_KEY=
 - [x] HeroSection.astro — saludo, tagline, bio, CTA al blog, links sociales
 - [x] AboutSection.astro — bio, párrafos y chips de skills
 - [ ] Home page completa (Work + Projects + Blog preview)
-- [ ] Work Experience con al menos 3 experiencias (sección en home)
+- [x] Work Experience con al menos 3 experiencias (sección en home)
 - [ ] Projects con 3+ proyectos (sección en home)
 - [ ] 5 posts de ejemplo en blog
 - [ ] Blog listado funcional
