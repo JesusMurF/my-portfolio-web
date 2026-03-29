@@ -1,0 +1,91 @@
+---
+// WorkSection.astro — experiencia laboral en cards limpias, sin timeline visual.
+// Componente .astro puro: sin JS en cliente.
+// Docs: https://docs.astro.build/en/basics/astro-components/
+
+// Los datos viven aquí en el frontmatter: se procesan en build time y
+// generan HTML estático. Cuando tengamos contenido real se pueden mover
+// a una Content Collection o a constants.ts.
+const jobs = [
+  {
+    company: 'Acme Corp',
+    role: 'Senior Frontend Developer',
+    period: '2022 — actualidad',
+    achievements: [
+      'Lideré la migración del frontend legacy a React 18, reduciendo el tiempo de carga inicial un 40%.',
+      'Diseñé el sistema de design tokens que adoptó todo el equipo de producto.',
+      'Mentorié a dos desarrolladores junior hasta su autonomía completa.',
+      'Implanté tests de integración con Playwright, pasando de 0% a 70% de cobertura en áreas críticas.',
+    ],
+    stack: ['React', 'TypeScript', 'Playwright', 'Vite', 'Figma'],
+  },
+  {
+    company: 'Startup XYZ',
+    role: 'Fullstack Developer',
+    period: '2020 — 2022',
+    achievements: [
+      'Construí desde cero la API REST que alimenta la app móvil (Node.js + PostgreSQL).',
+      'Reduje el tiempo de respuesta medio de los endpoints críticos de 800ms a 120ms.',
+      'Integré pasarelas de pago (Stripe) y sistema de notificaciones en tiempo real (WebSockets).',
+    ],
+    stack: ['Node.js', 'PostgreSQL', 'React', 'Redis', 'Stripe'],
+  },
+  {
+    company: 'Agencia Digital ABC',
+    role: 'Frontend Developer',
+    period: '2018 — 2020',
+    achievements: [
+      'Desarrollé más de 15 proyectos web para clientes de sectores variados.',
+      'Implementé estándares de accesibilidad WCAG 2.1 AA en todos los proyectos nuevos.',
+      'Optimicé el workflow de entrega pasando de deploys manuales a CI/CD con GitHub Actions.',
+    ],
+    stack: ['HTML', 'CSS', 'JavaScript', 'WordPress', 'GitHub Actions'],
+  },
+];
+---
+
+<section class="border-t border-border-color pt-16 pb-16">
+  <!-- Etiqueta de sección -->
+  <p class="text-muted text-sm font-mono mb-3 tracking-widest uppercase">
+    Experiencia
+  </p>
+
+  <h2 class="text-2xl font-bold text-fg mb-8">
+    Dónde he trabajado.
+  </h2>
+
+  <!-- Cards de experiencia — sin timeline, layout vertical limpio -->
+  <div class="flex flex-col gap-6">
+    {jobs.map((job) => (
+      <div class="bg-surface rounded-lg p-6">
+        <!-- Cabecera de la card -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-4">
+          <div>
+            <h3 class="text-fg font-semibold">{job.role}</h3>
+            <p class="text-primary text-sm">{job.company}</p>
+          </div>
+          <span class="text-muted text-sm font-mono">{job.period}</span>
+        </div>
+
+        <!-- Logros -->
+        <ul class="space-y-2 mb-5">
+          {job.achievements.map((item) => (
+            <li class="text-muted text-sm leading-relaxed flex gap-2">
+              <span class="text-primary mt-1 shrink-0">–</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Stack tecnológico -->
+        <div class="flex flex-wrap gap-2">
+          {job.stack.map((tech) => (
+            <span class="bg-bg text-muted text-xs px-2 py-1 rounded border border-border-color">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
