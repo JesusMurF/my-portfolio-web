@@ -1,0 +1,8 @@
+{
+  "title": "Dashboard Analytics",
+  "description": "Panel de métricas en tiempo real que consume varias APIs externas. Incluye gráficas interactivas y exportación a CSV.",
+  "stack": ["React", "TypeScript", "Recharts", "React Query"],
+  "github": "https://github.com/example/analytics-dashboard",
+  "demo": "https://analytics-dashboard.vercel.app",
+  "featured": true
+}

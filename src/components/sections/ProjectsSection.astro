@@ -1,0 +1,77 @@
+---
+// ProjectsSection.astro — proyectos destacados con links a GitHub y demo.
+// Usamos Content Collections para cargar los datos desde projects.json.
+// getCollection() devuelve los entries validados contra el esquema de content.config.ts.
+// Docs: https://docs.astro.build/en/guides/content-collections/#querying-collections
+
+import { getCollection } from 'astro:content';
+
+// Filtramos solo los proyectos marcados como featured y los ordenamos por título.
+// getCollection() se ejecuta en build time: el resultado es HTML estático, sin JS en cliente.
+const allProjects = await getCollection('projects');
+const projects = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<section class="border-t border-border-color pt-16 pb-16">
+  <!-- Etiqueta de sección -->
+  <p class="text-muted text-sm font-mono mb-3 tracking-widest uppercase">
+    Proyectos
+  </p>
+
+  <h2 class="text-2xl font-bold text-fg mb-8">
+    Cosas que he construido.
+  </h2>
+
+  <div class="flex flex-col gap-6">
+    {projects.map((project) => (
+      <div class="bg-surface rounded-lg p-6">
+        <!-- Cabecera: título + links -->
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <h3 class="text-fg font-semibold">{project.data.title}</h3>
+
+          <!-- Links externos — solo se renderizan si existen en el JSON -->
+          <div class="flex gap-3 shrink-0">
+            {project.data.github && (
+              <a
+                href={project.data.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-muted hover:text-primary text-sm transition-colors"
+                aria-label={`Código de ${project.data.title} en GitHub`}
+              >
+                GitHub
+              </a>
+            )}
+            {project.data.demo && (
+              <a
+                href={project.data.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-muted hover:text-secondary text-sm transition-colors"
+                aria-label={`Demo de ${project.data.title}`}
+              >
+                Demo →
+              </a>
+            )}
+          </div>
+        </div>
+
+        <!-- Descripción -->
+        <p class="text-muted text-sm leading-relaxed mb-5">
+          {project.data.description}
+        </p>
+
+        <!-- Stack tecnológico -->
+        <div class="flex flex-wrap gap-2">
+          {project.data.stack.map((tech) => (
+            <span class="bg-bg text-muted text-xs px-2 py-1 rounded border border-border-color">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

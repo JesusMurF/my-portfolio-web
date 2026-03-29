@@ -1,0 +1,7 @@
+{
+  "title": "CLI de Scaffolding",
+  "description": "Herramienta de línea de comandos para generar proyectos con plantillas configurables. Publicada en npm con más de 500 descargas.",
+  "stack": ["Node.js", "Commander.js", "Inquirer", "Handlebars"],
+  "github": "https://github.com/example/scaffold-cli",
+  "featured": false
+}

@@ -346,7 +346,7 @@ EMAIL_PUBLIC_KEY=
 - [x] AboutSection.astro — bio, párrafos y chips de skills
 - [ ] Home page completa (Work + Projects + Blog preview)
 - [x] Work Experience con al menos 3 experiencias (sección en home)
-- [ ] Projects con 3+ proyectos (sección en home)
+- [x] Projects con 3+ proyectos (sección en home)
 - [ ] 5 posts de ejemplo en blog
 - [ ] Blog listado funcional
 - [ ] Página individual de post funcional
