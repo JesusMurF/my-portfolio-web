@@ -61,3 +61,134 @@ body {
     background-color 0.2s ease,
     color 0.2s ease;
 }
+
+/* ============================================
+   Prose — estilos tipográficos para Markdown
+   ============================================ */
+
+/*
+ * .prose-content aplica estilos al HTML generado por Astro al renderizar Markdown.
+ * Tailwind resetea todos los estilos por defecto (incluidos h2, p, ul, code...),
+ * así que necesitamos redefinirlos para el contenido del blog.
+ * Usamos estilos propios en lugar de @tailwindcss/typography para evitar dependencias extra.
+ */
+.prose-content h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.prose-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--fg);
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-content p {
+  color: var(--fg);
+  line-height: 1.75;
+  margin-bottom: 1.25rem;
+}
+
+.prose-content strong {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+.prose-content a {
+  color: #3b82f6;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-content a:hover {
+  opacity: 0.8;
+}
+
+.prose-content ul,
+.prose-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-content ul {
+  list-style-type: disc;
+}
+
+.prose-content ol {
+  list-style-type: decimal;
+}
+
+.prose-content li {
+  color: var(--fg);
+  line-height: 1.75;
+  margin-bottom: 0.25rem;
+}
+
+.prose-content hr {
+  border-color: var(--border-color);
+  margin: 2rem 0;
+}
+
+.prose-content code {
+  font-family: monospace;
+  font-size: 0.875rem;
+  background-color: var(--surface);
+  color: #10b981;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+}
+
+/*
+ * Shiki con temas duales genera el HTML así:
+ *   <pre style="background-color:#fff; --shiki-dark-bg:#24292e">
+ *   <span style="color:#005CC5; --shiki-dark:#79B8FF">
+ *
+ * Los colores del tema LIGHT están como color/background-color inline directamente.
+ * Los colores del tema DARK están como variables --shiki-dark / --shiki-dark-bg.
+ * NO existe --shiki-light — los colores light ya son el valor inline por defecto.
+ *
+ * Estrategia:
+ * - Light mode: no tocamos nada, los inline styles de Shiki ya son correctos.
+ * - Dark mode: sobreescribimos con !important usando las variables --shiki-dark.
+ *   (Sin !important los inline styles ganarían siempre, mostrando colores light en dark.)
+ */
+.prose-content pre {
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin-bottom: 1.25rem;
+}
+
+.prose-content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+/* Dark mode: activar colores del tema oscuro de Shiki */
+html:not([data-theme="light"]) .prose-content pre {
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+html:not([data-theme="light"]) .prose-content pre code,
+html:not([data-theme="light"]) .prose-content pre span {
+  color: var(--shiki-dark) !important;
+}
+
+.prose-content blockquote {
+  border-left: 3px solid #3b82f6;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+  font-style: italic;
+}

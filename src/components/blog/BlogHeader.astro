@@ -1,0 +1,33 @@
+---
+// BlogHeader es la cabecera de un post individual.
+// Muestra los tags, el título h1 y la fecha formateada.
+// Se coloca justo encima del contenido renderizado del post.
+
+interface Props {
+  title: string;
+  date: Date;
+  tags: string[];
+}
+
+const { title, date, tags } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('es-ES', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<header class="mb-10">
+  {tags.length > 0 && (
+    <div class="flex gap-2 flex-wrap mb-4">
+      {tags.map(tag => (
+        <span class="text-xs font-mono text-primary border border-primary/30 rounded px-2 py-0.5">
+          {tag}
+        </span>
+      ))}
+    </div>
+  )}
+  <h1 class="text-3xl font-bold text-fg mb-3 leading-tight">{title}</h1>
+  <p class="text-sm text-muted font-mono">{formattedDate}</p>
+</header>

@@ -1,0 +1,42 @@
+---
+// BlogToc (Table of Contents) recibe los headings que Astro extrae automáticamente
+// del Markdown al renderizar el post con entry.render().
+// Solo muestra h2 y h3 (depth 2 y 3). h1 es el título del post, no va en el TOC.
+//
+// Astro genera automáticamente IDs para cada heading del Markdown,
+// así los links #slug funcionan sin configuración adicional.
+// Docs: https://docs.astro.build/en/guides/markdown-content/#heading-ids
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+}
+
+const { headings } = Astro.props;
+
+// Filtramos solo h2 y h3 para mantener el TOC manejable
+const tocHeadings = headings.filter(h => h.depth === 2 || h.depth === 3);
+---
+
+{tocHeadings.length > 0 && (
+  <nav class="mb-10 p-4 bg-surface rounded-lg border border-border-color">
+    <p class="text-xs font-mono text-muted uppercase tracking-widest mb-3">Contenido</p>
+    <ol class="flex flex-col gap-1.5">
+      {tocHeadings.map(heading => (
+        <li class={heading.depth === 3 ? 'pl-4' : ''}>
+          <a
+            href={`#${heading.slug}`}
+            class="text-sm text-muted hover:text-fg transition-colors"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
