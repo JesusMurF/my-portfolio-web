@@ -21,4 +21,19 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+// La colección blog usa glob para archivos .md.
+// z.coerce.date() convierte automáticamente el string del frontmatter a un objeto Date.
+// draft: true = borrador (no se publica). Por defecto false, así los posts se publican salvo que lo indiques.
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    tags: z.array(z.string()).default([]),
+    image: z.string().optional(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { projects, blog };

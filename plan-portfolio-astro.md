@@ -344,12 +344,12 @@ EMAIL_PUBLIC_KEY=
 - [x] Head.astro — meta tags, favicon, script anti-flash
 - [x] HeroSection.astro — saludo, tagline, bio, CTA al blog, links sociales
 - [x] AboutSection.astro — bio, párrafos y chips de skills
-- [ ] Home page completa (Work + Projects + Blog preview)
+- [x] Home page completa (Work + Projects + Blog preview)
 - [x] Work Experience con al menos 3 experiencias (sección en home)
 - [x] Projects con 3+ proyectos (sección en home)
-- [ ] 5 posts de ejemplo en blog
-- [ ] Blog listado funcional
-- [ ] Página individual de post funcional
+- [x] 5 posts de ejemplo en blog
+- [x] Blog listado funcional
+- [x] Página individual de post funcional
 - [ ] GitHub API integrada
 - [ ] Goodreads API integrada
 - [ ] GitHub widget integrado en home
