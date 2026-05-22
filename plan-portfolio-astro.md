@@ -6,7 +6,7 @@
 - **Hosting:** Vercel
 - **Paleta:** Minimal Contrast (Dark/Light mode)
 - **Protagonista:** Blog
-- **Integraciones:** GitHub API + Goodreads API
+- **Integraciones:** Ninguna (sitio estático puro)
 - **Desplegado:** Vercel
 
 ---
@@ -48,9 +48,6 @@ src/
 │   │   ├── BlogCard.astro
 │   │   ├── BlogHeader.astro
 │   │   └── BlogToc.astro
-│   ├── integrations/
-│   │   ├── GithubStats.jsx
-│   │   └── GoodreadsBooks.jsx
 │   └── shared/
 │       ├── ThemeToggle.jsx
 │       └── Head.astro
@@ -109,8 +106,6 @@ Secciones en orden:
 4. Projects section (3-5 proyectos destacados)
    - Título, descripción breve, tech stack, links (GitHub + demo)
 5. Blog section (3-4 extractos de posts recientes + CTA a /blog)
-6. GitHub widget (actividad reciente)
-7. Goodreads widget (últimos libros leídos)
 ```
 
 ---
@@ -178,36 +173,9 @@ CustomCodeBlock - Syntax highlighting personalizado
 
 ---
 
-### **FASE 4: Integraciones Dinámicas (Semana 4)**
+### **FASE 4: ThemeToggle (Semana 4)**
 
-#### Paso 4.1: GitHub API Integration
-
-```
-Crear composable/hook para traer datos:
-- Lenguajes usados esta semana
-- Último commit
-- Streak de días
-- Top repos públicos
-
-Datos se cachean y se actualizan cada hora (ISR)
-Usar API REST v3 de GitHub (token en .env)
-```
-
-#### Paso 4.2: Goodreads Integration
-
-```
-Opción 1: Goodreads API (deprecada pero aún funciona)
-Opción 2: Goodreads scraping suave + cache
-Opción 3: Notion como source (si usas Notion)
-
-Mostrar:
-- Libro actual (si está leyendo)
-- Últimos 3 completados
-- Rating
-- Pequeña descripción
-```
-
-#### Paso 4.3: ThemeToggle component
+#### Paso 4.1: ThemeToggle component
 
 ```
 Componente interactivo (React)
@@ -254,10 +222,7 @@ Target: 90+ en Lighthouse
 
 ```
 Conectar repo GitHub a Vercel
-Variables de entorno:
-- GITHUB_TOKEN
-- GOODREADS_API_KEY
-- (otras según integraciones)
+Variables de entorno: ninguna requerida para el deploy
 
 Deploy automático en push a main
 ```
@@ -278,10 +243,10 @@ Email de contacto (opcional)
 Semana 1: Setup base + estructura
 Semana 2: Home page completa (Hero, About, Work, Projects, Blog preview)
 Semana 3: Blog completamente funcional con 5 posts
-Semana 4: Integraciones GitHub + Goodreads
+Semana 4: ThemeToggle + ajustes de UI
 Semana 5: SEO, optimización y deploy
 
-MVP funcional: 5 semanas
+MVP funcional: 4-5 semanas
 MVP + pulido: 6-7 semanas
 ```
 
@@ -296,7 +261,6 @@ Si quieres ir más rápido, enfócate en esto (2-3 semanas):
 3. ✅ Home page completa (Hero, About, Work, Projects, Blog preview)
 4. ✅ Blog core (5 posts) + página /blog
 5. ✅ Deploy en Vercel
-6. ⏰ Después: Now, integraciones GitHub + Goodreads
 
 ---
 
@@ -320,13 +284,6 @@ Si quieres ir más rápido, enfócate en esto (2-3 semanas):
 ## 📝 Variables de Entorno Necesarias
 
 ```env
-# GitHub API
-GITHUB_TOKEN=tu_github_token
-GITHUB_USERNAME=tu_usuario
-
-# Goodreads (si usas API)
-GOODREADS_API_KEY=tu_key
-
 # Email (opcional, para contacto)
 EMAIL_SERVICE_ID=
 EMAIL_TEMPLATE_ID=
@@ -347,13 +304,9 @@ EMAIL_PUBLIC_KEY=
 - [ ] Home page completa (Work + Projects + Blog preview)
 - [x] Work Experience con al menos 3 experiencias (sección en home)
 - [x] Projects con 3+ proyectos (sección en home)
-- [ ] 5 posts de ejemplo en blog
-- [ ] Blog listado funcional
-- [ ] Página individual de post funcional
-- [ ] GitHub API integrada
-- [ ] Goodreads API integrada
-- [ ] GitHub widget integrado en home
-- [ ] Goodreads widget integrado en home
+- [x] 5 posts de ejemplo en blog
+- [x] Blog listado funcional
+- [x] Página individual de post funcional
 - [ ] SEO setup (meta tags, sitemap)
 - [ ] Lighthouse 90+
 - [ ] Desplegado en Vercel
